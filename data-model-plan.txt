@@ -1,0 +1,25 @@
+users
+  id:integer PK [presence, uniqueness]
+  name:string [presence, uniqueness, length(2-30)]
+  email:string [presence, uniqueness, format(valid email address)]
+  password:string [presence, length(8+), format(at least one capital letter)]
+
+  has_many posts
+  has_many comments
+
+posts
+  id:integer PK [presence, uniqueness]
+  user_id:integer FK [presence]
+  url:string [presence, format(valid url)]
+
+  belongs_to user
+  has_many comments
+
+comments
+  id:integer PK [presence, uniqueness]
+  user_id:integer FK [presence]
+  post_id:integer FK [presence]
+  body:text [presence, length(<= 500)]
+
+  belongs_to post
+  belongs_to user
