@@ -2,7 +2,7 @@ users
   id:integer PK [presence, uniqueness]
   name:string [presence, uniqueness, length(2-30)]
   email:string [presence, uniqueness, format(valid email address)]
-  password:string [presence, length(8+), format(at least one capital letter)]
+  password:string [presence, length(8+)]
 
   has_many posts
   has_many comments
